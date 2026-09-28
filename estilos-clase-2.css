@@ -1,0 +1,239 @@
+/* ============================================================
+   MINI TESOROS – Hoja de estilos
+   CLASE 2: tipografía, bordes y efectos
+   Seguimos sobre lo de la clase 1 y le damos PERSONALIDAD.
+
+   Antes de empezar, pegar esto en el <head> del index.html,
+   ANTES del link a estilos.css (trae las fuentes de Google):
+   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+   ============================================================ */
+
+/* Nuestra paleta
+   leche de fresa  #FFF0F4   fondo general
+   rosa chicle     #FF8FB1   color principal
+   fresa           #FF5C7A   detalles fuertes
+   menta           #9DE3CF   acento fresco
+   lila            #C8B6FF   acento suave
+   mantequilla     #FFE08A   resaltados
+   ciruela         #4A2545   textos y bordes
+*/
+
+
+/* ---------- TODA LA PÁGINA ---------- */
+
+body {
+  background-color: #FFF0F4;
+  color: #4A2545;
+  font-family: "Nunito", Arial, sans-serif;   /* NUEVO */
+  font-size: 17px;                            /* NUEVO */
+  line-height: 1.6;                           /* NUEVO: espacio entre líneas */
+}
+
+a {
+  color: #FF5C7A;
+}
+
+
+/* ---------- TÍTULOS (NUEVO) ---------- */
+
+h1,
+h2,
+h3 {
+  font-family: "Fredoka", Arial, sans-serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 44px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 21px;
+}
+
+
+/* ---------- CABECERA Y MENÚ ---------- */
+
+.cabecera {
+  background-color: #FFFFFF;
+  border-bottom: 3px dashed #FF8FB1;   /* NUEVO: parece una costura */
+}
+
+.cabecera a {
+  color: #4A2545;
+  font-weight: bold;                   /* NUEVO */
+  text-decoration: none;               /* NUEVO: saca el subrayado */
+}
+
+/* NUEVO: :hover = cuando el mouse pasa por encima */
+.cabecera nav a:hover {
+  background-color: #FF8FB1;
+}
+
+.logo {
+  font-family: "Fredoka", Arial, sans-serif;
+  font-size: 24px;
+}
+
+
+/* ---------- BOTÓN DE LA PORTADA ---------- */
+
+.boton {
+  background-color: #FFE08A;
+  color: #4A2545;
+  font-family: "Fredoka", Arial, sans-serif;   /* NUEVO */
+  font-size: 19px;                             /* NUEVO */
+  text-decoration: none;                       /* NUEVO */
+  border: 3px solid #4A2545;                   /* NUEVO */
+  border-radius: 999px;                        /* NUEVO: forma de pastilla */
+  box-shadow: 4px 4px 0 #4A2545;               /* NUEVO: sombra tipo sticker */
+  transition: 0.15s;                           /* NUEVO: cambio suave */
+}
+
+.boton:hover {
+  background-color: #FF8FB1;                   /* NUEVO: cambia de color */
+}
+
+
+/* ---------- IMAGEN DE PORTADA (NUEVO) ---------- */
+
+#inicio img {
+  border: 4px solid #4A2545;
+  border-radius: 24px;
+  box-shadow: 10px 10px 0 #9DE3CF;
+}
+
+
+/* ---------- PRODUCTOS ---------- */
+
+.producto {
+  background-color: #FFFFFF;
+  text-align: center;                   /* NUEVO */
+  border: 3px solid #4A2545;            /* NUEVO */
+  border-radius: 24px;                  /* NUEVO */
+  box-shadow: 6px 6px 0 #FF8FB1;        /* NUEVO */
+  transition: 0.3s;                     /* NUEVO */
+}
+
+/* NUEVO: al pasar el mouse, el llavero se balancea */
+.producto:hover {
+  transform: rotate(-3deg);
+}
+
+.producto img {
+  border-radius: 16px;                  /* NUEVO */
+}
+
+.producto strong {
+  color: #FF5C7A;
+  font-family: "Fredoka", Arial, sans-serif;   /* NUEVO */
+  font-size: 21px;                             /* NUEVO */
+}
+
+.producto figcaption {
+  font-size: 14px;                      /* NUEVO */
+  font-style: italic;                   /* NUEVO */
+}
+
+mark {
+  background-color: #FFE08A;
+  color: #4A2545;
+  font-weight: bold;                    /* NUEVO */
+  border-radius: 999px;                 /* NUEVO */
+}
+
+
+/* ---------- SOBRE NOSOTRAS ---------- */
+
+#nosotras strong {
+  color: #FF5C7A;
+}
+
+
+/* ---------- TABLA ---------- */
+
+th {
+  background-color: #C8B6FF;
+  font-family: "Fredoka", Arial, sans-serif;   /* NUEVO */
+  text-align: left;                            /* NUEVO */
+}
+
+caption {
+  font-weight: bold;                    /* NUEVO */
+}
+
+
+/* ---------- OPINIONES Y PREGUNTAS ---------- */
+
+blockquote,
+details {
+  background-color: #FFFFFF;
+  border: 3px solid #4A2545;            /* NUEVO */
+  border-radius: 24px;                  /* NUEVO */
+}
+
+blockquote {
+  font-size: 19px;                      /* NUEVO */
+}
+
+summary {
+  font-weight: bold;                    /* NUEVO */
+}
+
+
+/* ---------- FORMULARIO ---------- */
+
+fieldset {
+  background-color: #FFFFFF;
+  border: 3px dashed #FF8FB1;           /* NUEVO */
+  border-radius: 24px;                  /* NUEVO */
+}
+
+legend {
+  font-family: "Fredoka", Arial, sans-serif;   /* NUEVO */
+  font-size: 20px;                             /* NUEVO */
+}
+
+label {
+  font-weight: bold;                    /* NUEVO */
+}
+
+input,
+select,
+textarea {
+  background-color: #FFF0F4;
+  color: #4A2545;
+  border: 2px solid #4A2545;            /* NUEVO */
+  border-radius: 14px;                  /* NUEVO */
+}
+
+button {
+  background-color: #FFE08A;
+  color: #4A2545;
+  font-family: "Fredoka", Arial, sans-serif;   /* NUEVO */
+  font-size: 19px;                             /* NUEVO */
+  border: 3px solid #4A2545;                   /* NUEVO */
+  border-radius: 999px;                        /* NUEVO */
+  box-shadow: 4px 4px 0 #4A2545;               /* NUEVO */
+}
+
+button:hover {
+  background-color: #FF8FB1;                   /* NUEVO */
+}
+
+
+/* ---------- PIE DE PÁGINA ---------- */
+
+.pie {
+  background-color: #4A2545;
+  color: #FFF0F4;
+  text-align: center;                   /* NUEVO */
+}
+
+.pie a {
+  color: #FFE08A;
+}

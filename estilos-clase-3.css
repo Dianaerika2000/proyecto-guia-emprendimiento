@@ -1,0 +1,417 @@
+/* ============================================================
+   MINI TESOROS – Hoja de estilos
+   CLASE 3: cajas, espacios y orden
+   Todo lo NUEVO de hoy es margin, padding, flexbox y responsive.
+   ============================================================ */
+
+/* Nuestra paleta
+   leche de fresa  #FFF0F4   fondo general
+   rosa chicle     #FF8FB1   color principal
+   fresa           #FF5C7A   detalles fuertes
+   menta           #9DE3CF   acento fresco
+   lila            #C8B6FF   acento suave
+   mantequilla     #FFE08A   resaltados
+   ciruela         #4A2545   textos y bordes
+*/
+
+
+/* ---------- TRUCO DE CAJAS (NUEVO) ----------
+   El asterisco * selecciona TODO. Con border-box, el padding
+   y el borde quedan ADENTRO de la caja y no la agrandan. */
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* ---------- TODA LA PÁGINA ---------- */
+
+body {
+  margin: 0;                            /* NUEVO: saca el borde blanco del navegador */
+  background-color: #FFF0F4;
+  color: #4A2545;
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+a {
+  color: #FF5C7A;
+}
+
+/* NUEVO: las imágenes nunca se salen de su caja (clave en el celu) */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ---------- TÍTULOS ---------- */
+
+h1,
+h2,
+h3 {
+  font-family: "Fredoka", Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;                     /* NUEVO */
+}
+
+h1 {
+  font-size: 44px;
+  margin: 0 0 16px;                     /* NUEVO */
+}
+
+h2 {
+  font-size: 32px;
+  margin: 0 0 16px;                     /* NUEVO */
+}
+
+h3 {
+  font-size: 21px;
+  margin: 20px 0 6px;                   /* NUEVO */
+}
+
+
+/* ---------- CABECERA Y MENÚ (NUEVO: flexbox) ---------- */
+
+.cabecera {
+  display: flex;                        /* NUEVO: logo y menú uno al lado del otro */
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;       /* NUEVO: uno a cada punta */
+  gap: 8px 24px;
+  padding: 10px 20px;                   /* NUEVO */
+  background-color: #FFFFFF;
+  border-bottom: 3px dashed #FF8FB1;
+}
+
+.cabecera a {
+  color: #4A2545;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.logo {
+  display: flex;                        /* NUEVO: imagen y texto en fila */
+  align-items: center;
+  gap: 8px;
+  font-family: "Fredoka", Arial, sans-serif;
+  font-size: 24px;
+}
+
+.logo img {
+  width: 56px;                          /* NUEVO */
+}
+
+.cabecera nav ul {
+  display: flex;                        /* NUEVO: el menú en fila */
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;                            /* NUEVO */
+  padding: 0;                           /* NUEVO */
+  list-style: none;                     /* NUEVO: saca los puntitos */
+}
+
+.cabecera nav a {
+  display: block;                       /* NUEVO: para que el padding funcione bien */
+  padding: 6px 14px;                    /* NUEVO */
+  border-radius: 999px;                 /* NUEVO: forma de pastilla */
+}
+
+.cabecera nav a:hover {
+  background-color: #FF8FB1;
+}
+
+
+/* ---------- TODAS LAS SECCIONES (NUEVO) ----------
+   Ancho máximo y centradas con margin auto. */
+
+main section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 20px;
+}
+
+
+/* ---------- PORTADA ---------- */
+
+#inicio img {
+  border: 4px solid #4A2545;
+  border-radius: 24px;
+  box-shadow: 10px 10px 0 #9DE3CF;
+}
+
+.boton {
+  display: inline-block;                /* NUEVO: ahora el enlace es una caja */
+  padding: 12px 28px;                   /* NUEVO */
+  background-color: #FFE08A;
+  color: #4A2545;
+  font-family: "Fredoka", Arial, sans-serif;
+  font-size: 19px;
+  text-decoration: none;
+  border: 3px solid #4A2545;
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 #4A2545;
+  transition: 0.15s;
+}
+
+/* NUEVO: como ahora es una caja, lo podemos mover */
+.boton:hover {
+  box-shadow: 1px 1px 0 #4A2545;        /* la sombra se achica... */
+  transform: translate(3px, 3px);       /* ...y parece que se hunde */
+}
+
+
+/* ---------- PRODUCTOS (NUEVO: flexbox) ---------- */
+
+.catalogo {
+  display: flex;
+  flex-wrap: wrap;                      /* bajan de fila cuando no entran */
+  justify-content: center;
+  gap: 28px;
+  margin-top: 32px;
+}
+
+.producto {
+  width: 240px;                         /* NUEVO */
+  padding: 16px 16px 20px;              /* NUEVO */
+  background-color: #FFFFFF;
+  text-align: center;
+  border: 3px solid #4A2545;
+  border-radius: 24px;
+  box-shadow: 6px 6px 0 #FF8FB1;
+  transition: 0.3s;
+}
+
+.producto:hover {
+  transform: rotate(-3deg);
+}
+
+.producto figure {
+  margin: 0;                            /* NUEVO */
+}
+
+.producto img {
+  border-radius: 16px;
+}
+
+.producto p {
+  margin: 6px 0;                        /* NUEVO */
+}
+
+.producto strong {
+  color: #FF5C7A;
+  font-family: "Fredoka", Arial, sans-serif;
+  font-size: 21px;
+}
+
+.producto figcaption {
+  font-size: 14px;
+  font-style: italic;
+}
+
+mark {
+  padding: 2px 12px;                    /* NUEVO */
+  background-color: #FFE08A;
+  color: #4A2545;
+  font-weight: bold;
+  border-radius: 999px;
+}
+
+
+/* ---------- SOBRE NOSOTRAS ---------- */
+
+#nosotras strong {
+  color: #FF5C7A;
+}
+
+
+/* ---------- TABLA ---------- */
+
+.tabla-contenedor {
+  overflow-x: auto;                     /* NUEVO: en el celu la tabla se desliza de costado */
+}
+
+table {
+  width: 100%;                          /* NUEVO */
+  border-collapse: collapse;            /* NUEVO: une los bordes de las celdas */
+  background-color: #FFFFFF;
+}
+
+caption {
+  padding: 12px;                        /* NUEVO */
+  font-weight: bold;
+}
+
+th,
+td {
+  padding: 12px 16px;                   /* NUEVO */
+}
+
+th {
+  background-color: #C8B6FF;
+  font-family: "Fredoka", Arial, sans-serif;
+  text-align: left;
+}
+
+
+/* ---------- OPINIONES (NUEVO: flexbox) ---------- */
+
+.testimonios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.testimonios figure {
+  width: 300px;                         /* NUEVO */
+  flex-grow: 1;                         /* NUEVO: crecen para ocupar el espacio */
+  margin: 0;
+}
+
+blockquote,
+details {
+  background-color: #FFFFFF;
+  border: 3px solid #4A2545;
+  border-radius: 24px;
+}
+
+blockquote {
+  margin: 0 0 12px;                     /* NUEVO */
+  padding: 20px 22px;                   /* NUEVO */
+  font-size: 19px;
+}
+
+blockquote p {
+  margin: 0;                            /* NUEVO */
+}
+
+
+/* ---------- PREGUNTAS ---------- */
+
+details {
+  margin-bottom: 12px;                  /* NUEVO */
+}
+
+summary {
+  padding: 14px 20px;                   /* NUEVO */
+  font-weight: bold;
+}
+
+details p {
+  margin: 0;                            /* NUEVO */
+  padding: 0 20px 14px;                 /* NUEVO */
+}
+
+
+/* ---------- FORMULARIO ---------- */
+
+form {
+  max-width: 640px;                     /* NUEVO */
+}
+
+fieldset {
+  margin: 0 0 24px;                     /* NUEVO */
+  padding: 16px 22px;                   /* NUEVO */
+  background-color: #FFFFFF;
+  border: 3px dashed #FF8FB1;
+  border-radius: 24px;
+}
+
+legend {
+  padding: 0 8px;                       /* NUEVO */
+  font-family: "Fredoka", Arial, sans-serif;
+  font-size: 20px;
+}
+
+label {
+  display: block;                       /* NUEVO: el texto arriba y el campo abajo */
+  margin-bottom: 4px;                   /* NUEVO */
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;                          /* NUEVO: los campos ocupan todo el ancho */
+  padding: 10px 14px;                   /* NUEVO */
+  background-color: #FFF0F4;
+  color: #4A2545;
+  font-family: inherit;                 /* NUEVO: usan la misma letra que la página */
+  font-size: inherit;
+  border: 2px solid #4A2545;
+  border-radius: 14px;
+}
+
+/* NUEVO: los círculos (radio) y la casilla (checkbox) NO tienen que
+   ocupar todo el ancho, y su texto va en la misma línea.
+   [type="radio"] elige solo los input de ese tipo.
+   El + significa "el label que está justo después". */
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  display: inline;
+  font-weight: normal;
+}
+
+button {
+  padding: 12px 32px;                   /* NUEVO */
+  margin-right: 8px;                    /* NUEVO: separa los dos botones */
+  background-color: #FFE08A;
+  color: #4A2545;
+  font-family: "Fredoka", Arial, sans-serif;
+  font-size: 19px;
+  border: 3px solid #4A2545;
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 #4A2545;
+  cursor: pointer;                      /* NUEVO: aparece la manito */
+}
+
+button:hover {
+  background-color: #FF8FB1;
+}
+
+
+/* ---------- PIE DE PÁGINA ---------- */
+
+.pie {
+  padding: 40px 20px;                   /* NUEVO */
+  background-color: #4A2545;
+  color: #FFF0F4;
+  text-align: center;
+}
+
+.pie a {
+  color: #FFE08A;
+}
+
+.pie ul {
+  display: flex;                        /* NUEVO: redes en fila */
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+
+/* ---------- RESPONSIVE (NUEVO) ----------
+   Primero diseñamos para el celular. Cuando la pantalla
+   mide 768px o más, ponemos el texto y la imagen de la
+   portada uno al lado del otro. */
+
+@media (min-width: 768px) {
+  #inicio {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .inicio-texto,
+  #inicio img {
+    width: 50%;
+  }
+}

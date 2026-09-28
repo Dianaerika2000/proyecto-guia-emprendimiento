@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<!--
+  ¡Hola! 👋 Bienvenida a tu proyecto final.
+
+  Esta es la página web de "Mini Tesoros", un emprendimiento ficticio
+  de llaveritos hechos a mano. Es el EJEMPLO sobre el que vamos a
+  trabajar en clase. Después vas a usar esta misma estructura para
+  armar la página de TU propio emprendimiento.
+
+  ¿CÓMO LEER ESTE ARCHIVO?
+  - Lo que está entre <!- - y - -> (así, sin espacios) es un COMENTARIO.
+    El navegador no lo muestra: son notas para las personas que leen
+    el código. ¡Como esta!
+  - Abrí este archivo con un editor (VS Code, por ejemplo) para leer
+    el código, y con el navegador (doble clic) para ver la página.
+  - Por ahora la página se ve "simple": letras negras y fondo blanco.
+    ¡Es a propósito! Todavía NO tiene CSS (los estilos). En las próximas
+    clases le vamos a dar colores, formas y diseño.
+
+  ESTRUCTURA DE CARPETAS
+    mini-tesoros/
+      index.html   <- este archivo (la página principal siempre se llama index)
+      img/         <- las imágenes de la página
+  Importante: no cambies los nombres de la carpeta img ni de las imágenes,
+  porque el HTML las busca exactamente con esos nombres.
+
+  ¿QUÉ ES EL "HTML SEMÁNTICO"?
+  Usar etiquetas que DESCRIBEN lo que contienen: <header> para la cabecera,
+  <nav> para el menú, <footer> para el pie... en lugar de usar cajas sin
+  significado para todo. Así el código se entiende mejor, los buscadores
+  (como Google) entienden la página y los lectores de pantalla que usan
+  las personas ciegas pueden recorrerla fácilmente.
+-->
+
+<!-- <html lang="es">: la etiqueta que envuelve TODO. "lang" indica el idioma
+     de la página, así el navegador y los lectores de pantalla pronuncian bien. -->
+<html lang="es">
+
+<!-- ============================================================
+     <head>: la "cabeza" de la página. Lo que va aquí NO se ve en
+     la página, pero le da información importante al navegador.
+     ============================================================ -->
+<head>
+  <!-- Codificación de caracteres: permite usar tildes, ñ, ¿ y ¡ sin que
+       aparezcan símbolos raros. -->
+  <meta charset="UTF-8">
+
+  <!-- Hace que la página se adapte al ancho de los celulares.
+       Sin esto, en el celular se vería como una página de computadora
+       achicada. Lo vamos a aprovechar mucho en las clases de CSS. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Descripción corta que muestran los buscadores debajo del título. -->
+  <meta name="description" content="Mini Tesoros: llaveritos hechos a mano, personalizados y llenos de color.">
+
+  <!-- Título que aparece en la pestaña del navegador. ¡Mirá la pestaña! -->
+  <title>Mini Tesoros | Llaveritos hechos a mano</title>
+
+  <!-- PRÓXIMAMENTE (clase de CSS): aquí conectaremos la hoja de estilos con
+       una etiqueta <link>, algo así:
+       <link rel="stylesheet" href="css/estilos.css">
+       Por ahora está dentro de un comentario, así que no hace nada. -->
+  <link rel="stylesheet" href="estilos-clase-1.css">
+</head>
+
+
+<!-- ============================================================
+     <body>: el "cuerpo". TODO lo que se ve en la página va aquí.
+     Está dividido en tres grandes partes:
+       <header> (cabecera)  ->  <main> (contenido)  ->  <footer> (pie)
+     ============================================================ -->
+<body>
+
+  <!-- ==========================================================
+       <header>: la cabecera. Suele tener el logo y el menú.
+       El atributo class="cabecera" le pone un "nombre" a la etiqueta.
+       Por ahora no hace nada visible: lo usaremos en CSS para darle
+       estilo solo a esta parte.
+       ========================================================== -->
+  <header class="cabecera">
+
+    <!-- Un enlace <a> que envuelve el logo: al hacer clic, vuelve al inicio.
+         href="#inicio" lleva a la parte de la página que tiene id="inicio". -->
+    <a href="#inicio" class="logo">
+      <!-- <img>: muestra una imagen. No tiene etiqueta de cierre.
+           - src: la RUTA donde está la imagen (carpeta img, archivo logo.svg)
+           - alt: texto alternativo. Lo leen los lectores de pantalla y aparece
+             si la imagen no carga. ¡Siempre hay que ponerlo!
+           - width y height: ancho y alto en píxeles. -->
+      <img src="img/logo.svg" alt="Logo de Mini Tesoros: un llavero con forma de estrella" width="80" height="80">
+      <!-- <span>: una "cajita" de texto sin significado especial. Sirve para
+           poder darle estilo a una parte del texto más adelante. -->
+      <span>Mini Tesoros</span>
+    </a>
+
+    <!-- <nav>: agrupa los enlaces de navegación principales.
+         aria-label le da un nombre para los lectores de pantalla,
+         porque la página tiene DOS menús (este y el de redes sociales). -->
+    <nav aria-label="Menú principal">
+      <!-- El menú es una lista (<ul>) de enlaces. Es la forma correcta de
+           armar menús. Cada enlace lleva a una sección usando su id. -->
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotras">Sobre nosotras</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#pedidos">Cómo pedir</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- ==========================================================
+       <main>: el contenido principal de la página.
+       Solo puede haber UN <main> por página.
+       ========================================================== -->
+  <main>
+
+    <!-- ========== 1. PORTADA / INICIO ========== -->
+    <!-- <section>: una sección temática de la página. Casi siempre tiene
+         su propio título.
+         id="inicio": un nombre ÚNICO (no se puede repetir en la página).
+         Gracias a él, el enlace href="#inicio" del menú sabe a dónde ir. -->
+    <section id="inicio">
+
+      <!-- <div>: una caja SIN significado. La usamos solo para AGRUPAR
+           el texto y el botón, así en CSS podremos poner el texto de un
+           lado y la imagen del otro. Regla de oro: si existe una etiqueta
+           semántica que sirva, usá esa; el <div> es el último recurso. -->
+      <div class="inicio-texto">
+        <!-- <h1>: el título más importante. Solo UNO por página.
+             Los títulos van de <h1> (más importante) a <h6> (menos importante)
+             y no hay que saltearse niveles: después de h1 viene h2, luego h3. -->
+        <h1>Llaveritos hechos a mano para llevar tu estilo a todas partes</h1>
+
+        <!-- <p>: un párrafo de texto. -->
+        <p>Diseños únicos de resina, tejido y mostacillas. También los hacemos con tu nombre, tu inicial o tu idea favorita.</p>
+
+        <!-- Un enlace que luego, con CSS, se verá como un botón. -->
+        <p><a href="#productos" class="boton">Ver productos</a></p>
+      </div>
+
+      <img src="img/portada.svg" alt="Tres llaveritos kawaii colgando de una argolla: una fresa, una estrella y una nube" width="600" height="400">
+    </section>
+
+
+    <!-- ========== 2. SOBRE NOSOTRAS ========== -->
+    <section id="nosotras">
+      <h2>Sobre nosotras</h2>
+      <p>
+        <!-- <strong>: texto IMPORTANTE (el navegador lo muestra en negrita). -->
+        Somos <strong>Mini Tesoros</strong>, un emprendimiento que nació en 2024 cuando empezamos
+        a hacer llaveritos para regalar a nuestras amigas. Les gustaron tanto que decidimos
+        convertir nuestro pasatiempo en un pequeño negocio.
+      </p>
+
+      <h3>Nuestra misión</h3>
+      <p>Crear accesorios pequeños, bonitos y accesibles que hagan sonreír a quien los lleva.</p>
+
+      <h3>¿Qué nos hace diferentes?</h3>
+      <!-- <ul> = lista NO ordenada (con viñetas). Se usa cuando el orden
+           de los elementos no importa. Cada elemento va en un <li>. -->
+      <ul>
+        <li>Cada llavero es hecho a mano, pieza por pieza.</li>
+        <li>Puedes personalizar colores, letras y formas.</li>
+        <li>Usamos materiales resistentes para que duren mucho tiempo.</li>
+      </ul>
+    </section>
+
+
+    <!-- ========== 3. PRODUCTOS / CATÁLOGO ========== -->
+    <section id="productos">
+      <h2>Nuestros productos</h2>
+      <p>Estos son algunos de nuestros llaveritos más pedidos. Precios en pesos argentinos.</p>
+
+      <!-- Este <div> agrupa todas las tarjetas de productos. En CSS lo vamos
+           a convertir en una cuadrícula para mostrarlas una al lado de la otra. -->
+      <div class="catalogo">
+
+        <!-- <article>: contenido que tiene sentido POR SÍ SOLO, aunque lo
+             saques de la página (como una publicación o una tarjeta de producto).
+             Todas las tarjetas tienen class="producto" porque son iguales:
+             en CSS escribiremos el estilo UNA vez y se aplicará a todas.
+             Diferencia clave: un id es único; una class se puede repetir. -->
+        <article class="producto">
+          <!-- <figure>: una imagen (o ilustración) con su pie de foto.
+               <figcaption>: el pie de foto, la descripción que la acompaña. -->
+          <figure>
+            <img src="img/llavero-fresita.svg" alt="Llavero de resina con forma de fresa roja" width="300" height="300">
+            <figcaption>Llavero Fresita</figcaption>
+          </figure>
+          <h3>Fresita de resina</h3>
+          <p>Brillante, liviana y resistente al agua. Ideal para tu mochila.</p>
+          <p>Precio: <strong>$ 4.500</strong></p>
+        </article>
+
+        <article class="producto">
+          <figure>
+            <img src="img/llavero-gatito.svg" alt="Gatito gris tejido a crochet con cachetitos rosados" width="300" height="300">
+            <figcaption>Llavero Gatito</figcaption>
+          </figure>
+          <h3>Gatito tejido</h3>
+          <p>Tejido a crochet, suave y esponjoso. Puedes elegir el color.</p>
+          <p>Precio: <strong>$ 7.500</strong></p>
+        </article>
+
+        <article class="producto">
+          <figure>
+            <img src="img/llavero-inicial.svg" alt="Nube blanca con la letra M lila y estrellitas rosadas" width="300" height="300">
+            <figcaption>Llavero con inicial</figcaption>
+          </figure>
+          <h3>Inicial personalizada</h3>
+          <p>Tu letra favorita con brillos, flores o estrellitas dentro.</p>
+          <p>Precio: <strong>$ 5.500</strong></p>
+          <!-- <mark>: resalta un texto, como si lo marcaras con resaltador. -->
+          <p><mark>¡El más vendido!</mark></p>
+        </article>
+
+        <article class="producto">
+          <figure>
+            <img src="img/llavero-mostacillas.svg" alt="Llavero de mostacillas de colores con el nombre LUZ" width="300" height="300">
+            <figcaption>Llavero de mostacillas</figcaption>
+          </figure>
+          <h3>Nombre en mostacillas</h3>
+          <p>Tu nombre o una palabra especial armada con cuentas de colores.</p>
+          <p>Precio: <strong>$ 5.000</strong></p>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- ========== 4. TABLA DE PRECIOS POR CANTIDAD ========== -->
+    <section id="precios">
+      <h2>Precios por cantidad</h2>
+
+      <!-- Este <div> nos va a servir en CSS para que, en el celular, la tabla
+           se pueda deslizar de costado si no entra en la pantalla. -->
+      <div class="tabla-contenedor">
+
+        <!-- <table>: una TABLA. Solo se usa para mostrar DATOS en filas y
+             columnas (como una planilla). ¡No para acomodar el diseño de la página!
+
+             Partes de una tabla:
+             - <caption>: el título de la tabla.
+             - <thead>: la cabecera (los títulos de las columnas).
+             - <tbody>: el cuerpo (los datos).
+             - <tr> (table row): una FILA.
+             - <th> (table header): una celda de TÍTULO. scope="col" indica que
+               es el título de una columna.
+             - <td> (table data): una celda con un DATO común. -->
+        <table>
+          <caption>Descuentos para pedidos grandes (cumpleaños, promociones, regalos)</caption>
+          <thead>
+            <tr>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Descuento</th>
+              <th scope="col">Tiempo de entrega</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 a 4 llaveritos</td>
+              <td>Sin descuento</td>
+              <td>3 días</td>
+            </tr>
+            <tr>
+              <td>5 a 9 llaveritos</td>
+              <td>10 %</td>
+              <td>5 días</td>
+            </tr>
+            <tr>
+              <td>10 o más</td>
+              <td>15 %</td>
+              <td>7 días</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <!-- ========== 5. CÓMO HACER UN PEDIDO ========== -->
+    <section id="pedidos">
+      <h2>¿Cómo hacer un pedido?</h2>
+      <!-- <ol> = lista ORDENADA (con números). Aquí sí importa el orden,
+           porque son pasos que se siguen uno detrás del otro.
+           Compará con el <ul> de "Sobre nosotras". -->
+      <ol class="pasos">
+        <li>Elige tu llavero en el catálogo.</li>
+        <li>Escríbenos por el formulario o por WhatsApp.</li>
+        <li>Cuéntanos los colores, letras o detalles que quieres.</li>
+        <li>Confirmamos el precio y la fecha de entrega.</li>
+        <li>¡Recibe tu Mini Tesoro!</li>
+      </ol>
+      <!-- <em>: ÉNFASIS (el navegador lo muestra en cursiva). -->
+      <p><em>Los pedidos personalizados necesitan un adelanto del 50 %.</em></p>
+    </section>
+
+
+    <!-- ========== 6. OPINIONES DE CLIENTES ========== -->
+    <section id="opiniones">
+      <h2>Lo que dicen nuestras clientas</h2>
+      <div class="testimonios">
+        <!-- <blockquote>: una CITA, algo que dijo otra persona.
+             <cite>: quién lo dijo (o de dónde viene la cita).
+             Usamos <figure> para unir la cita con su autora. -->
+        <figure>
+          <blockquote>
+            <p>Pedí llaveritos con las iniciales de mis amigas y quedaron hermosos. ¡Llegaron antes de lo esperado!</p>
+          </blockquote>
+          <figcaption>— <cite>Valeria, 15 años</cite></figcaption>
+        </figure>
+
+        <figure>
+          <blockquote>
+            <p>El gatito tejido es lo más tierno que tengo en mi mochila.</p>
+          </blockquote>
+          <figcaption>— <cite>Camila, 13 años</cite></figcaption>
+        </figure>
+      </div>
+    </section>
+
+
+    <!-- ========== 7. PREGUNTAS FRECUENTES ========== -->
+    <section id="preguntas">
+      <h2>Preguntas frecuentes</h2>
+      <!-- <details> + <summary>: crean un bloque que se ABRE y se CIERRA
+           al hacer clic. ¡Sin JavaScript! Probalo en el navegador.
+           - <summary>: lo que se ve siempre (la pregunta).
+           - El resto del contenido (la respuesta) aparece al abrirlo. -->
+      <details>
+        <summary>¿Hacen envíos?</summary>
+        <p>Sí, hacemos entregas en puntos de encuentro y envíos a domicilio con un costo adicional.</p>
+      </details>
+
+      <details>
+        <summary>¿Puedo pedir un diseño que no está en el catálogo?</summary>
+        <p>¡Claro! Envíanos una foto o describe tu idea y te diremos si podemos hacerlo.</p>
+      </details>
+
+      <details>
+        <summary>¿Qué formas de pago aceptan?</summary>
+        <p>Efectivo, transferencia bancaria y pago con código QR.</p>
+      </details>
+    </section>
+
+
+    <!-- ========== 8. CONTACTO: ¡FORMULARIOS! ========== -->
+    <!--
+      ============================================================
+      TEMA NUEVO: LOS FORMULARIOS
+      Un formulario sirve para que la persona que visita la página
+      nos ENVÍE información: su nombre, un mensaje, un pedido...
+
+      Las etiquetas principales:
+        <form>      -> envuelve todo el formulario
+        <fieldset>  -> agrupa campos relacionados
+        <legend>    -> título de cada grupo
+        <label>     -> el texto que explica cada campo
+        <input>     -> un campo para completar (hay MUCHOS tipos)
+        <select>    -> una lista desplegable de opciones
+        <textarea>  -> un campo para textos largos
+        <button>    -> el botón para enviar
+
+      LA REGLA MÁS IMPORTANTE: cada <label> se conecta con su campo.
+      El for="" del label tiene que ser IGUAL al id="" del campo.
+      ¿Para qué? Si hacés clic en el texto del label, el cursor salta
+      al campo. Y los lectores de pantalla saben qué pedir en cada campo.
+      ¡Probalo haciendo clic en las palabras "Nombre" o "Correo"!
+      ============================================================
+    -->
+    <section id="contacto">
+      <h2>Contáctanos</h2>
+      <p>¿Tienes una idea para tu llavero? Escríbenos y te respondemos en menos de 24 horas.</p>
+
+      <!-- <form>: normalmente tiene dos atributos:
+           - action: A DÓNDE se envían los datos (una dirección de un servidor).
+           - method: CÓMO se envían ("get" o "post").
+           Este formulario todavía NO tiene action, así que no envía los datos
+           a ningún lado. Más adelante lo haremos funcionar. Si tocás "Enviar",
+           la página solo se recarga. ¡Es normal! -->
+      <form>
+
+        <!-- ===== GRUPO 1: DATOS PERSONALES ===== -->
+        <fieldset>
+          <legend>Tus datos</legend>
+
+          <p>
+            <label for="nombre">Nombre</label>
+            <!-- <input type="text">: un campo de texto corto. No tiene cierre.
+                 - id: conecta el campo con su label (for="nombre").
+                 - name: el NOMBRE con el que se envía el dato. Es como la
+                   "etiqueta" que tendrá la respuesta: nombre = "Valeria".
+                   Sin name, el dato NO se envía.
+                 - placeholder: texto de ejemplo en gris que desaparece al escribir.
+                   Ojo: NO reemplaza al label, es solo una ayuda.
+                 - required: el campo es OBLIGATORIO. Si lo dejás vacío y tocás
+                   "Enviar", el navegador te avisa. ¡Probalo! -->
+            <input type="text" id="nombre" name="nombre" placeholder="Ej: Valeria" required>
+          </p>
+
+          <p>
+            <label for="correo">Correo electrónico</label>
+            <!-- type="email": el navegador revisa que el texto tenga forma de
+                 correo (que tenga @, por ejemplo). En el celular, además, muestra
+                 un teclado con el símbolo @ a mano. -->
+            <input type="email" id="correo" name="correo" placeholder="Ej: valeria@correo.com" required>
+          </p>
+
+          <p>
+            <label for="telefono">Teléfono (opcional)</label>
+            <!-- type="tel": para números de teléfono. En el celular abre el
+                 teclado numérico. Este NO tiene required: es opcional. -->
+            <input type="tel" id="telefono" name="telefono" placeholder="Ej: 11 2345 6789">
+          </p>
+        </fieldset>
+
+        <!-- ===== GRUPO 2: EL PEDIDO ===== -->
+        <fieldset>
+          <legend>Tu pedido</legend>
+
+          <p>
+            <label for="producto">¿Qué llavero te interesa?</label>
+            <!-- <select>: una lista DESPLEGABLE. Cada opción va en un <option>.
+                 - Lo que está entre <option> y </option> es lo que VE la persona.
+                 - value="" es lo que se ENVÍA (por eso suele ir sin espacios
+                   ni tildes). -->
+            <select id="producto" name="producto">
+              <option value="fresita">Fresita de resina</option>
+              <option value="gatito">Gatito tejido</option>
+              <option value="inicial">Inicial personalizada</option>
+              <option value="mostacillas">Nombre en mostacillas</option>
+              <option value="otro">Otro diseño</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="cantidad">Cantidad</label>
+            <!-- type="number": solo acepta números y muestra flechitas para
+                 subir o bajar el valor.
+                 - min y max: el número más chico y el más grande permitidos.
+                 - value: el valor que aparece escrito desde el principio. -->
+            <input type="number" id="cantidad" name="cantidad" min="1" max="50" value="1">
+          </p>
+
+          <p>
+            <label for="fecha">¿Para cuándo lo necesitas?</label>
+            <!-- type="date": muestra un calendario para elegir una fecha.
+                 ¡Hacé clic y fijate! -->
+            <input type="date" id="fecha" name="fecha">
+          </p>
+
+          <!-- BOTONES DE OPCIÓN (radio): se puede elegir SOLO UNA opción.
+               El truco: todos los radios del mismo grupo tienen el MISMO name
+               (aquí name="entrega"). Así el navegador sabe que van juntos
+               y, si elegís uno, se desmarca el otro.
+               - checked: la opción que aparece marcada desde el principio.
+               Usamos un <fieldset> propio para agrupar la pregunta. -->
+          <fieldset>
+            <legend>¿Cómo prefieres recibirlo?</legend>
+            <p>
+              <input type="radio" id="entrega-encuentro" name="entrega" value="encuentro" checked>
+              <label for="entrega-encuentro">Punto de encuentro</label>
+            </p>
+            <p>
+              <input type="radio" id="entrega-domicilio" name="entrega" value="domicilio">
+              <label for="entrega-domicilio">Envío a domicilio</label>
+            </p>
+          </fieldset>
+
+          <p>
+            <label for="mensaje">Cuéntanos tu idea</label>
+            <!-- <textarea>: un campo para textos LARGOS (varias líneas).
+                 A diferencia de <input>, SÍ tiene etiqueta de cierre.
+                 - rows: cuántas líneas de alto tiene al principio. -->
+            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Colores, letras, forma..."></textarea>
+          </p>
+
+          <p>
+            <!-- CASILLA DE VERIFICACIÓN (checkbox): se marca o se desmarca.
+                 A diferencia del radio, si hubiera varias, se podrían marcar
+                 TODAS las que quieras. -->
+            <input type="checkbox" id="novedades" name="novedades">
+            <label for="novedades">Quiero enterarme de los nuevos diseños</label>
+          </p>
+        </fieldset>
+
+        <!-- <button>: un botón. El type indica qué hace:
+             - type="submit": ENVÍA el formulario (y revisa los campos required).
+             - type="reset": BORRA todo lo que se escribió y vuelve al inicio.
+             Probá completar algunos campos y tocar "Borrar todo". -->
+        <button type="submit">Enviar mensaje</button>
+        <button type="reset">Borrar todo</button>
+      </form>
+    </section>
+
+  </main>
+
+
+  <!-- ==========================================================
+       <footer>: el pie de página. Suele tener datos de contacto,
+       redes sociales y los derechos de autor.
+       ========================================================== -->
+  <footer class="pie">
+
+    <!-- <address>: los datos de contacto de la dueña de la página. -->
+    <address>
+      <!-- Enlaces especiales:
+           - https://wa.me/... abre un chat de WhatsApp (el número es de mentira).
+           - mailto: abre el programa de correo para escribir un mail. -->
+      <p>WhatsApp: <a href="https://wa.me/00000000000">+000 0000 0000</a></p>
+      <p>Correo: <a href="mailto:hola@minitesoros.com">hola@minitesoros.com</a></p>
+    </address>
+
+    <!-- Un segundo menú, para las redes sociales.
+         href="#" es un enlace "vacío": todavía no lleva a ningún lado.
+         Cuando tengas tus redes, reemplazá el # por la dirección real.
+         target="_blank" hace que el enlace se abra en una pestaña NUEVA,
+         así la persona no pierde tu página. -->
+    <nav aria-label="Redes sociales">
+      <ul>
+        <li><a href="#" target="_blank">Instagram</a></li>
+        <li><a href="#" target="_blank">TikTok</a></li>
+        <li><a href="#" target="_blank">Facebook</a></li>
+      </ul>
+    </nav>
+
+    <!-- <small>: la "letra chica", para avisos legales o derechos.
+         &copy; es un CÓDIGO que el navegador convierte en el símbolo ©. -->
+    <p><small>&copy; 2026 Mini Tesoros. Hecho con cariño y HTML.</small></p>
+  </footer>
+  
+</body>
+</html>

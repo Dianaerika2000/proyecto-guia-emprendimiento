@@ -1,0 +1,104 @@
+/* ============================================================
+   MINI TESOROS – Hoja de estilos
+   CLASE 1: selectores y colores
+   Hoy solo cambiamos COLORES. Todavía no tocamos letras ni espacios.
+   ============================================================ */
+
+/* Nuestra paleta: la anotamos acá para tenerla siempre a mano
+   leche de fresa  #FFF0F4   fondo general
+   rosa chicle     #FF8FB1   color principal
+   fresa           #FF5C7A   detalles fuertes
+   menta           #9DE3CF   acento fresco
+   lila            #C8B6FF   acento suave
+   mantequilla     #FFE08A   resaltados
+   ciruela         #4A2545   textos y bordes
+*/
+
+
+/* ---------- SELECTOR DE ETIQUETA ----------
+   Se aplica a TODOS los elementos de ese tipo. */
+
+body {
+  background-color: #FFF0F4;
+  color: #4A2545;
+}
+
+a {
+  color: #FF5C7A;
+}
+
+/* Varios selectores juntos, separados por coma */
+blockquote,
+details,
+fieldset {
+  background-color: #FFFFFF;
+}
+
+th {
+  background-color: #C8B6FF;
+}
+
+mark {
+  background-color: #FFE08A;
+  color: #4A2545;
+}
+
+input,
+select,
+textarea {
+  background-color: #FFF0F4;
+  color: #4A2545;
+}
+
+button {
+  background-color: #FFE08A;
+  color: #4A2545;
+}
+
+
+/* ---------- SELECTOR DE CLASE (con punto) ----------
+   Se aplica a todos los elementos que tengan esa clase. */
+
+.cabecera {
+  background-color: #FFFFFF;
+}
+
+.producto {
+  background-color: #FFFFFF;
+}
+
+.producto strong {
+  color: #FF5C7A;
+}
+
+.boton {
+  background-color: #FFE08A;
+  color: #4A2545;
+}
+
+.pie {
+  background-color: #4A2545;
+  color: #FFF0F4;
+}
+
+.pie a {
+  color: #FFE08A;
+}
+
+
+/* ---------- SELECTOR DE ID (con numeral) ----------
+   Se aplica a UN solo elemento: el que tiene ese id. */
+
+#nosotras strong {
+  color: #FF5C7A; /* el nombre "Mini Tesoros" en color fresa */
+}
+
+
+/* ---------- LA CASCADA ----------
+   Arriba dijimos que todos los enlaces son color fresa.
+   Pero esta regla es más específica (clase + etiqueta),
+   así que los enlaces del menú quedan color ciruela. */
+
+.cabecera a {
+  color: #4A2545;
+}

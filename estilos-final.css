@@ -1,0 +1,605 @@
+/* ============================================================
+   MINI TESOROS – Hoja de estilos (versión final / "de profesional")
+   Estilo: kawaii, dulce y redondito, como "leche de fresa".
+   Idea principal: cada producto es una tarjeta que CUELGA
+   de una argollita, como un llavero de verdad.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. VARIABLES
+   Guardamos colores y medidas en un solo lugar.
+   Si cambias un color aquí, cambia en TODA la página.
+   ------------------------------------------------------------ */
+:root {
+  --leche-fresa: #FFF0F4;   /* fondo general */
+  --rosa-chicle: #FF8FB1;   /* color principal */
+  --fresa:       #FF5C7A;   /* detalles fuertes */
+  --menta:       #9DE3CF;   /* acento fresco */
+  --lila:        #C8B6FF;   /* acento suave */
+  --mantequilla: #FFE08A;   /* resaltados */
+  --ciruela:     #4A2545;   /* textos y bordes */
+  --blanco:      #FFFFFF;
+  --metal:       #B8B2C8;   /* color de la argolla */
+
+  --fuente-titulos: "Fredoka", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+  --fuente-texto:   "Nunito", "Segoe UI", Arial, sans-serif;
+
+  --redondeo: 24px;
+  --sombra-sticker: 6px 6px 0 var(--rosa-chicle); /* sombra sólida tipo sticker */
+}
+
+
+/* ------------------------------------------------------------
+   2. REINICIO BÁSICO
+   ------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* el padding y el borde NO agrandan las cajas */
+}
+
+html {
+  scroll-behavior: smooth;    /* el menú se desliza suavemente */
+  scroll-padding-top: 90px;   /* para que la cabecera fija no tape los títulos */
+}
+
+body {
+  margin: 0;
+  background-color: var(--leche-fresa);
+  color: var(--ciruela);
+  font-family: var(--fuente-texto);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;  /* las imágenes nunca se salen de su caja */
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--fresa);
+}
+
+/* Contorno visible al navegar con el teclado (accesibilidad) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--lila);
+  outline-offset: 3px;
+}
+
+
+/* ------------------------------------------------------------
+   3. TIPOGRAFÍA
+   ------------------------------------------------------------ */
+h1,
+h2,
+h3 {
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem); /* crece según el ancho de la pantalla */
+  margin: 0 0 1rem;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  margin: 0 0 1rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin: 1.2rem 0 0.4rem;
+}
+
+p {
+  max-width: 65ch; /* líneas cómodas de leer */
+}
+
+
+/* ------------------------------------------------------------
+   4. CABECERA Y MENÚ (Flexbox)
+   ------------------------------------------------------------ */
+.cabecera {
+  position: sticky;     /* se queda pegada arriba al bajar */
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding: 0.6rem 1.25rem;
+  background-color: var(--blanco);
+  border-bottom: 3px dashed var(--rosa-chicle); /* parece una costura */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--ciruela);
+  font-family: var(--fuente-titulos);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.logo img {
+  width: 56px;
+  height: 56px;
+}
+
+.cabecera nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cabecera nav a {
+  display: block;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px; /* forma de pastilla */
+  color: var(--ciruela);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.cabecera nav a:hover {
+  background-color: var(--rosa-chicle);
+  color: var(--ciruela); /* texto oscuro: el blanco sobre rosa casi no se leía */
+}
+
+
+/* ------------------------------------------------------------
+   5. SECCIONES (espacio y ancho máximo)
+   ------------------------------------------------------------ */
+main section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3.5rem 1.25rem;
+}
+
+
+/* ------------------------------------------------------------
+   6. PORTADA
+   ------------------------------------------------------------ */
+#inicio {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+#inicio img {
+  border: 4px solid var(--ciruela);
+  border-radius: var(--redondeo);
+  box-shadow: 10px 10px 0 var(--menta);
+}
+
+/* Botón: en realidad es un enlace <a> con apariencia de botón */
+.boton {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border: 3px solid var(--ciruela);
+  border-radius: 999px;
+  background-color: var(--mantequilla);
+  color: var(--ciruela);
+  font-family: var(--fuente-titulos);
+  font-size: 1.15rem;
+  text-decoration: none;
+  box-shadow: 4px 4px 0 var(--ciruela);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.boton:hover {
+  transform: translate(2px, 2px);   /* parece que se "hunde" */
+  box-shadow: 2px 2px 0 var(--ciruela);
+}
+
+
+/* ------------------------------------------------------------
+   7. SOBRE NOSOTRAS: viñetas personalizadas
+   ------------------------------------------------------------ */
+#nosotras strong {
+  color: var(--fresa);
+}
+
+#nosotras ul {
+  padding: 0;
+  list-style: none;
+}
+
+#nosotras li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+#nosotras li::before {
+  content: "✿";         /* una florcita en lugar del punto */
+  position: absolute;
+  left: 0;
+  color: var(--fresa);
+}
+
+
+/* ------------------------------------------------------------
+   8. CATÁLOGO DE PRODUCTOS (CSS Grid)
+   ------------------------------------------------------------ */
+.catalogo {
+  display: grid;
+  /* tantas columnas como quepan, de mínimo 230px cada una */
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 3.5rem 1.75rem;
+  margin-top: 3rem;
+}
+
+.producto {
+  position: relative;  /* necesario para ubicar la argolla (::before) */
+  padding: 1rem 1rem 1.25rem;
+  background-color: var(--blanco);
+  border: 3px solid var(--ciruela);
+  border-radius: var(--redondeo);
+  box-shadow: var(--sombra-sticker);
+  text-align: center;
+  transform-origin: top center; /* gira desde arriba, como un llavero */
+  transition: transform 0.3s;
+}
+
+/* La argollita metálica: un círculo creado solo con CSS */
+.producto::before {
+  content: "";
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  border: 6px solid var(--metal);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+/* Colores distintos para cada tarjeta con :nth-child */
+.producto:nth-child(2) { box-shadow: 6px 6px 0 var(--lila); }
+.producto:nth-child(3) { box-shadow: 6px 6px 0 var(--mantequilla); }
+.producto:nth-child(4) { box-shadow: 6px 6px 0 var(--menta); }
+
+/* Al pasar el mouse, el llavero se balancea un poquito */
+.producto:hover {
+  transform: rotate(-3deg);
+}
+
+.producto figure {
+  margin: 0;
+}
+
+.producto img {
+  border-radius: 16px;
+}
+
+.producto figcaption {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.producto p {
+  margin: 0.4rem auto;
+}
+
+.producto strong {
+  font-family: var(--fuente-titulos);
+  font-size: 1.3rem;
+  color: var(--fresa);
+}
+
+mark {
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  background-color: var(--mantequilla);
+  color: var(--ciruela);
+  font-weight: 700;
+}
+
+
+/* ------------------------------------------------------------
+   9. TABLA DE PRECIOS
+   ------------------------------------------------------------ */
+.tabla-contenedor {
+  overflow-x: auto; /* en celular la tabla se desliza de lado */
+  border: 3px solid var(--ciruela);
+  border-radius: var(--redondeo);
+  background-color: var(--blanco);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+caption {
+  padding: 0.9rem;
+  font-weight: 700;
+}
+
+th,
+td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+}
+
+th {
+  background-color: var(--lila);
+  font-family: var(--fuente-titulos);
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--leche-fresa); /* filas cebra */
+}
+
+
+/* ------------------------------------------------------------
+   10. PASOS DEL PEDIDO (contadores de CSS)
+   ------------------------------------------------------------ */
+.pasos {
+  counter-reset: paso;   /* creamos un contador llamado "paso" */
+  padding: 0;
+  list-style: none;
+}
+
+.pasos li {
+  counter-increment: paso; /* suma 1 en cada <li> */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.pasos li::before {
+  content: counter(paso);  /* muestra el número */
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 3px solid var(--ciruela);
+  border-radius: 50%;
+  background-color: var(--rosa-chicle);
+  color: var(--blanco);
+  font-family: var(--fuente-titulos);
+  font-size: 1.2rem;
+}
+
+
+/* ------------------------------------------------------------
+   11. OPINIONES: globos de diálogo
+   ------------------------------------------------------------ */
+.testimonios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.testimonios figure {
+  margin: 0;
+}
+
+blockquote {
+  position: relative;
+  margin: 0 0 1.2rem;
+  padding: 1.2rem 1.4rem;
+  border: 3px solid var(--ciruela);
+  border-radius: var(--redondeo);
+  background-color: var(--blanco);
+  font-size: 1.1rem;
+}
+
+/* La "colita" del globo: un cuadrado girado */
+blockquote::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 32px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--blanco);
+  border-right: 3px solid var(--ciruela);
+  border-bottom: 3px solid var(--ciruela);
+  transform: rotate(45deg);
+}
+
+blockquote p {
+  margin: 0;
+}
+
+.testimonios figcaption {
+  padding-left: 1.5rem;
+  font-weight: 700;
+}
+
+
+/* ------------------------------------------------------------
+   12. PREGUNTAS FRECUENTES
+   ------------------------------------------------------------ */
+details {
+  margin-bottom: 0.8rem;
+  border: 3px solid var(--ciruela);
+  border-radius: 18px;
+  background-color: var(--blanco);
+  overflow: hidden;
+}
+
+summary {
+  padding: 0.9rem 1.2rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+details[open] summary {
+  background-color: var(--menta);
+}
+
+details p {
+  margin: 0;
+  padding: 0.9rem 1.2rem;
+}
+
+
+/* ------------------------------------------------------------
+   13. FORMULARIO DE CONTACTO
+   ------------------------------------------------------------ */
+form {
+  max-width: 640px;
+}
+
+fieldset {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.4rem;
+  border: 3px dashed var(--rosa-chicle);
+  border-radius: var(--redondeo);
+  background-color: var(--blanco);
+}
+
+legend {
+  padding: 0 0.5rem;
+  font-family: var(--fuente-titulos);
+  font-size: 1.2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 2px solid var(--ciruela);
+  border-radius: 14px;
+  background-color: var(--leche-fresa);
+  color: var(--ciruela);
+  font: inherit;
+}
+
+/* Radios y checkbox: el círculo y la etiqueta en la misma línea */
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: var(--fresa);  /* colorea el control nativo */
+  width: 1.2rem;
+  height: 1.2rem;
+  vertical-align: middle;
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  display: inline;
+  margin-left: 0.4rem;
+  font-weight: 400;
+}
+
+button {
+  padding: 0.8rem 2rem;
+  border: 3px solid var(--ciruela);
+  border-radius: 999px;
+  margin-right: 0.5rem;
+  background-color: var(--mantequilla);
+  color: var(--ciruela);
+  font-family: var(--fuente-titulos);
+  font-size: 1.15rem;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--ciruela);
+}
+
+button:hover {
+  background-color: var(--rosa-chicle);
+}
+
+/* El botón de borrar se ve más "tranquilo" para no confundirlo con Enviar */
+button[type="reset"] {
+  background-color: var(--blanco);
+  box-shadow: none;
+}
+
+
+/* ------------------------------------------------------------
+   14. PIE DE PÁGINA
+   ------------------------------------------------------------ */
+.pie {
+  padding: 2.5rem 1.25rem;
+  background-color: var(--ciruela);
+  color: var(--leche-fresa);
+  text-align: center;
+}
+
+.pie a {
+  color: var(--mantequilla);
+}
+
+.pie address {
+  font-style: normal;
+}
+
+.pie address p,
+.pie small {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pie ul {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 0;
+  list-style: none;
+}
+
+
+/* ------------------------------------------------------------
+   15. RESPONSIVE (pantallas medianas y grandes)
+   Primero diseñamos para celular; aquí agregamos cambios
+   cuando la pantalla mide 768px o más.
+   ------------------------------------------------------------ */
+@media (min-width: 768px) {
+  #inicio {
+    grid-template-columns: 1fr 1fr; /* texto e imagen lado a lado */
+    min-height: 70vh;
+  }
+}
+
+
+/* ------------------------------------------------------------
+   16. ACCESIBILIDAD: menos movimiento
+   Si la persona pidió "reducir movimiento" en su equipo,
+   quitamos balanceos y transiciones.
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .producto,
+  .boton {
+    transition: none;
+  }
+
+  .producto:hover {
+    transform: none;
+  }
+}
